@@ -27,3 +27,5 @@ jobs:
          ls -ltra
          mvn -B package --file pom.xml
          ls -ltra
+         cd target
+         ls -ltra
