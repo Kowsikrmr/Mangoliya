@@ -1,0 +1,83 @@
+### **Scenario-Based Questions for Linux System Admin and DevOps (with Answers):**
+==================================================================================
+
+1. **How would you troubleshoot a server that is not responding?**  
+   - Check network connectivity using `ping`.  
+   - Verify services with `systemctl status`.  
+   - Inspect logs in `/var/log/`.  
+   - Check resource usage with `top` or `htop`.
+
+2. **What steps would you take if a disk is 100% full on a critical server?**  
+   - Use `du -sh /*` to identify large directories.  
+   - Clear old logs with `sudo rm` or `journalctl --vacuum-size/time`.  
+   - Archive and move less critical data to another server.
+
+3. **How would you add a new user to the system?**  
+   - Command: `sudo adduser <username>`.  
+   - Assign to groups using `usermod -aG <group> <username>`.
+
+4. **A service is down; how would you restart it?**  
+   - Command: `sudo systemctl restart <service_name>` or `service <service_name> restart`.  
+   - Check logs with `journalctl -u <service_name>` for errors.
+
+5. **How would you check if a port is open on a server?**  
+   - Use `netstat -tuln` or `ss -tuln` to check listening ports.  
+   - For remote servers, use `telnet` or `nc` commands.
+
+6. **How would you check the health of a node in a Kubernetes cluster?**  
+   - Command: `kubectl get nodes` to view node status.  
+   - Check resource usage with `kubectl top nodes`.
+
+7. **How would you troubleshoot slow system performance?**  
+   - Use `top`, `iotop`, or `sar` to monitor CPU, memory, and disk I/O usage.  
+   - Check for high network activity with `ifstat` or `nload`.
+
+8. **How would you resize a logical volume in LVM?**  
+   - Extend: `lvextend -L +<size> <lv_path>` and `resize2fs <lv_path>`.  
+   - Reduce: Unmount, reduce size with `lvreduce`, then remount.
+
+9. **How would you schedule a backup using `crontab`?**  
+   - Example: `0 2 * * * rsync -av /source /backup` to run at 2 AM daily.
+
+10. **How would you secure SSH on a server?**  
+   - Disable root login in `/etc/ssh/sshd_config`.  
+   - Use SSH keys instead of passwords.  
+   - Change the default port from 22 to a custom port.
+
+11. **A file is locked by another process; how would you unlock it?**  
+   - Find the process using `lsof <file>` or `fuser <file>`.  
+   - Kill the process with `kill -9 <PID>` if appropriate.
+
+12. **How would you monitor disk usage in real-time?**  
+   - Use `watch df -h` to continuously monitor disk space.
+
+13. **How would you verify if a package is installed?**  
+   - Command: `dpkg -l | grep <package>` (Debian/Ubuntu) or `rpm -qa | grep <package>` (RHEL/CentOS).
+
+14. **How would you create a new partition on a disk?**  
+   - Use `fdisk` or `parted` to create the partition, then format it with `mkfs`.
+
+15. **How would you check the running kernel version?**  
+   - Command: `uname -r`.
+
+16. **How would you find and kill a process consuming high memory?**  
+   - Use `top` or `ps aux --sort=-%mem`.  
+   - Kill the process with `kill -9 <PID>`.
+
+17. **How would you implement load balancing for a web application?**  
+   - Use a reverse proxy like Nginx or HAProxy.  
+   - Example configuration: `upstream backend { server 192.168.1.2; }` in Nginx.
+
+18. **How would you troubleshoot a network issue?**  
+   - Test connectivity with `ping` or `traceroute`.  
+   - Inspect routes with `ip route` and interfaces with `ip addr`.
+
+19. **How would you automate repetitive tasks?**  
+   - Write a Bash script and schedule it with `crontab`.  
+   - Example: Automate log cleanup with `find /var/log -name "*.log" -delete`.
+
+20. **How would you debug a failed container in Docker?**  
+   - Check logs with `docker logs <container_id>`.  
+   - Inspect the container with `docker inspect <container_id>`.
+
+Let me know if you need the remaining 30 or specific focus questions!
